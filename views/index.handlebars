@@ -1,0 +1,55 @@
+{{!-- * Setup the `index.handlebars` to have the template that Handlebars can render onto. --}}
+<div>
+     <img src="https://media.giphy.com/media/xUOwFTXbdTpZcmKW3K/giphy.gif" width="480" height="245" frameBorder="0"
+     class="giphy-embed">
+          <img src="https://media.giphy.com/media/xUOwFTXbdTpZcmKW3K/giphy.gif" width="480" height="245" frameBorder="0"
+     class="giphy-embed">
+
+<div class="container">
+     <div class="row">
+          <div class="col s12">
+               <h1 class="center-align">Burger Buttons</h1>
+
+               <div class="col s6 task">
+                    {{#each burger_data}}
+                    {{#unless this.devoured}}
+                    <div class="col s9  ">
+                         {{this.id}}. {{this.burger_name}}
+                    </div>
+                    <div class="col s3 center-align">
+                         <form method="POST" action="/burgers/update?_method=PUT">
+
+                              {{!-- This is hidden input, this.id is the value read by the cb function--}}
+                              <input type="hidden" name="burger_id" type="text" value={{this.id}}>
+                              <button type="submit" class="btn waves-effect waves-light amber">Devour</button>
+                         </form><br>
+                    </div>
+                    {{/unless}}
+                    {{/each}}
+                    <br>
+
+               </div>
+               <div class="col s6 task">
+                    <div>
+                         {{#each burger_data}}
+                         {{#if this.devoured}}
+                         <input class="form-control" type="text" placeholder=" {{this.id}}. {{this.burger_name}}" readonly>
+                         {{/if}}
+
+                         {{/each}}
+                    </div>
+
+               </div>
+
+
+          </div>
+     </div>
+     <div class="row">
+          <form action ="/burgers/create" method="POST" class="col s12">
+               <input placeholder="Candy Cane Burger" name="burger_name" value="" id="enter_text">
+               <label for="burger_input">Order a burger here!</label>
+               <button class="btn waves-effect waves-light red" type="submit" id="text-enter-button>">Submit</button>
+          </form>
+     </div>
+
+</div>
