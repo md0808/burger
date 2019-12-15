@@ -7,16 +7,6 @@
 // * Export the ORM object in `module.exports`.
 const connection = require("./connection.js");
 
-function printQuestionMarks(num) {
-    var arr = [];
-
-    for (var i = 0; i < num; i++) {
-        arr.push("?");
-    }
-
-    return arr.toString();
-}
-
 
 
 const orm = {
@@ -33,12 +23,13 @@ const orm = {
         })
     },
     create: function (tableInput, value, cb) {
-        connection.query('INSERT INTO ' + tableInput + '(burger_name)' +
+            connection.query('INSERT INTO ' + tableInput + '(burger_name)' +
             ' VALUES ("'+ value +'");', function (err, result) {
                 if (err) throw err;
                 cb(result);
             })
-
+      
+  
     }
 
 }
