@@ -48,14 +48,16 @@
                               <input placeholder="Candy Cane Burger" name="burger_name" value="" id="enter_text">
                               <label for="burger_input">Order a burger here!</label>
                               <br><br>
+                              {{#if isNotBurger}}
+                              <p>Invalid entry. Try again</p>
+                              {{/if}}
                               <button class="btn waves-effect waves-light red" type="submit"
                                    id="text-enter-button>">Submit</button>
                          </form>
-                         <div id="speak-up">
-                              <p>Type Something.</p>
-                         </div>
+
                     </div>
                </div>
+
           </div>
      </div>
 
